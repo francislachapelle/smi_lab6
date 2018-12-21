@@ -1,0 +1,5 @@
+BufferCirculaire.c:14:6:initBC	16	static
+BufferCirculaire.c:24:5:readBC	16	static
+BufferCirculaire.c:33:6:writeBC	16	static
+BufferCirculaire.c:42:6:incrementReadingTailBC	4	static
+BufferCirculaire.c:48:19:getBCHandle	4	static

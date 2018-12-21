@@ -1,0 +1,4 @@
+adc.c:12:6:init_adc	40	static
+adc.c:42:10:read_adc	8	static
+adc.c:52:10:get_adc_data_ready_flag	4	static
+adc.c:57:8:set_adc_data_ready_flag	16	static

@@ -1,0 +1,2 @@
+dac.c:10:6:init_dac	32	static
+dac.c:34:6:write_dac	16	static

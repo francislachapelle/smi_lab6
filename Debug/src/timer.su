@@ -1,0 +1,5 @@
+timer.c:15:6:initTimerDelay	24	static
+timer.c:43:6:initTimerEchantillonnage	24	static
+timer.c:71:6:Delay	16	static
+timer.c:77:6:TIM2_IRQHandler	8	static
+timer.c:86:6:TIM4_IRQHandler	16	static

@@ -1,0 +1,10 @@
+passBandFilter.c:17:6:initFilter	4	static
+passBandFilter.c:23:6:computeFilter	32	static
+passBandFilter.c:40:5:readBC_Filtre	48	static
+passBandFilter.c:54:6:updateCutOffFreqs	16	static
+passBandFilter.c:66:9:getNewFreqsFlag	4	static
+passBandFilter.c:71:9:getComputeFilterFlag	4	static
+passBandFilter.c:76:6:setComputeFilterFlag	16	static
+passBandFilter.c:81:6:incrementCutOffFreq	16	static
+passBandFilter.c:86:6:decrementCutOffFreq	16	static
+passBandFilter.c:91:6:getCutOffFreqsHandle	4	static
