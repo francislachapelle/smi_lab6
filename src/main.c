@@ -17,12 +17,13 @@ int main(void)
 {
 	uint8_t filter_calculated = 0;
 
+	initTimerDelay();
 	initLcd();
 	initButtons();
 	initBC();
 	init_adc();
 	init_dac();
-	initTimerDelay();
+
 	initTimerEchantillonnage();
 
 	//Main Loop
@@ -38,13 +39,11 @@ int main(void)
 			filter_calculated = 1;
 		}
 		/* FIN TEST À ENLEVER */
-
-	//Ecrit la 2em ligne
-		int* cut_off_freqs = getCutOffFreqsHandle();
-		if (get_selected_freq() == 'A')
-			updateLcd(cut_off_freqs[FcA]);
-		else
-			updateLcd(cut_off_freqs[FcB]);
+		/*if (getUpdateLcdFlag())
+		{
+			updateLcd();
+			setUpdateLcdFlag(0);
+		}*/
 		Delay(30);
 
 	}//End main while

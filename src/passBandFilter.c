@@ -9,7 +9,7 @@
 #include "math.h"
 
 static double  myFilter[LENGTH_FILTRE];
-static float   cutOffFreqs[NUMBER_OF_CUT_OF_FREQS] = {100.0, 200.0};
+static float   cutOffFreqs[NUMBER_OF_CUT_OF_FREQS] = {0.0, 1000.0};
 static uint8_t newFreqsFlag;
 static uint8_t computeFilterFlag;
 
@@ -53,7 +53,7 @@ int readBC_Filtre(BufferCirculaire* p_buffer)
 
 void updateCutOffFreqs(void)
 {
-	if (cutOffFreqs[FcB] > cutOffFreqs[FcA]) {
+	if (cutOffFreqs[FcB] < cutOffFreqs[FcA]) {
 		int temp = cutOffFreqs[FcA];
 		cutOffFreqs[FcA] = cutOffFreqs[FcB];
 		cutOffFreqs[FcB] = temp;

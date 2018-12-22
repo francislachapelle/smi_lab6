@@ -7,6 +7,7 @@
 
 #include <buttons.h>
 #include "passBandFilter.h"
+#include "lcd.h"
 
 char Freq_Select = 'A';
 
@@ -28,12 +29,14 @@ void initButtons()
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
 
 	EXTI_InitTypeDef EXTI_InitStruct;
-	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource11 | EXTI_PinSource13 | EXTI_PinSource15);
-	EXTI_InitStruct.EXTI_Line = EXTI_Line11 | EXTI_Line13 | EXTI_Line15;
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource10);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource12);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOD, EXTI_PinSource14);
+	EXTI_InitStruct.EXTI_Line = EXTI_Line10 | EXTI_Line12 | EXTI_Line14;
 	EXTI_InitStruct.EXTI_LineCmd = ENABLE;
 	EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
 	/* Triggers on rising and falling edge */
-	EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising_Falling;		//A changer pour seulement 1 des 2!!!!!!!!!!!!!
+	EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Rising;		//A changer pour seulement 1 des 2!!!!!!!!!!!!!
 	EXTI_Init(&EXTI_InitStruct);
 
 	/* Add IRQ vector to NVIC */
@@ -51,33 +54,40 @@ char get_selected_freq(void)
 }
 
 
-void EXTI15_10_IRQHandler(void) {
-	if (EXTI_GetITStatus(EXTI_Line11) != RESET) {
+void EXTI15_10_IRQHandler(void)
+{
+	if (EXTI_GetITStatus(EXTI_Line10) != RESET) {
 		//Button Up
 		if (Freq_Select == 'A')
 			incrementCutOffFreq(FcA);
 		else
 			incrementCutOffFreq(FcB);
+		updateCutOffFreqs();
+		//setUpdateLcdFlag(1);
 
-		EXTI_ClearITPendingBit(EXTI_Line11);
+		EXTI_ClearITPendingBit(EXTI_Line10);
 	}
-	else if (EXTI_GetITStatus(EXTI_Line13) != RESET) {
+	else if (EXTI_GetITStatus(EXTI_Line12) != RESET) {
 		//Button Down
 		if (Freq_Select == 'A')
 			decrementCutOffFreq(FcA);
 		else
 			decrementCutOffFreq(FcB);
+		updateCutOffFreqs();
+		//setUpdateLcdFlag(1);
 
-		EXTI_ClearITPendingBit(EXTI_Line13);
+		EXTI_ClearITPendingBit(EXTI_Line12);
 	}
-	else if (EXTI_GetITStatus(EXTI_Line15) != RESET) {
+	else if (EXTI_GetITStatus(EXTI_Line14) != RESET) {
 		//Button Enter
 		if (Freq_Select == 'A')
 			Freq_Select = 'B';
 		else
 			Freq_Select = 'A';
-		setComputeFilterFlag(1);
-
-		EXTI_ClearITPendingBit(EXTI_Line15);
+		computeFilter();
+		//setUpdateLcdFlag(1);
+		EXTI_ClearITPendingBit(EXTI_Line14);
 	}
+	updateLcd();
+
 }

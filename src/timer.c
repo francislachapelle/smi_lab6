@@ -78,7 +78,7 @@ void TIM2_IRQHandler()
 {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update))
 	{
-		DelayCount--; //Interrup tout les 1ms
+		DelayCount--; //Interrupt tous les 1ms
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}
 }

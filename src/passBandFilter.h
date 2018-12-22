@@ -14,7 +14,7 @@
 #include "timer.h"
 
 #define		LENGTH_FILTRE			21
-#define		INCREMENTATION_FREQ 	10
+#define		INCREMENTATION_FREQ 	100
 #define		FS 				    	SAMPLING_FREQUENCY
 
 typedef enum
