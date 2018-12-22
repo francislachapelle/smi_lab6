@@ -93,3 +93,13 @@ int* getCutOffFreqsHandle(void)
 	return &cutOffFreqs[0];
 }
 
+int		getFcA(void)
+{
+	return cutOffFreqs[FcA];
+}
+
+int		getFcB(void)
+{
+	return cutOffFreqs[FcB];
+}
+

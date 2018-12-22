@@ -34,5 +34,7 @@ void 	incrementCutOffFreq(cut_off_freqs_t cut_off_freq);
 void 	decrementCutOffFreq(cut_off_freqs_t cut_off_freq);
 void 	updateCutOffFreqs(void);
 int*	getCutOffFreqsHandle(void);
+int		getFcA(void);
+int		getFcB(void);
 
 #endif /* PASSBANDFILTER_H_ */

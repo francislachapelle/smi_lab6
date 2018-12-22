@@ -2,5 +2,5 @@ lcd.c:19:6:initLcd	16	static
 lcd.c:61:6:writeCommand	24	static
 lcd.c:84:6:writeSymbol	24	static
 lcd.c:94:6:updateLcd	16	static
-lcd.c:115:9:getUpdateLcdFlag	4	static
-lcd.c:119:6:setUpdateLcdFlag	16	static
+lcd.c:114:9:getUpdateLcdFlag	4	static
+lcd.c:118:6:setUpdateLcdFlag	16	static

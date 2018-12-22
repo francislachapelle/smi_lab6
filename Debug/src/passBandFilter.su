@@ -8,3 +8,5 @@ passBandFilter.c:76:6:setComputeFilterFlag	16	static
 passBandFilter.c:81:6:incrementCutOffFreq	16	static
 passBandFilter.c:86:6:decrementCutOffFreq	16	static
 passBandFilter.c:91:6:getCutOffFreqsHandle	4	static
+passBandFilter.c:96:6:getFcA	4	static
+passBandFilter.c:101:6:getFcB	4	static

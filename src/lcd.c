@@ -12,7 +12,7 @@
 /* Private variables */
 static int 		number_of_characters_counter;
 static char    	first_line[16] = "SMI_NGFL   ";
-static char    	unity[4] = "0 Hz";
+static char    	unity[4] = " Hz";
 static int 		size_of_first_line_string;
 static uint8_t	update_lcd_flag;
 
@@ -90,16 +90,15 @@ void writeSymbol(char * p_symbol, int size_of_symbol)
 	}
 }
 
-static char   freqVector[5];
+static char   freqVector[7];
 void updateLcd(void)
 {
 	int freq;
-	int* cut_off_freqs = getCutOffFreqsHandle();
 
 	if (get_selected_freq() == 'A')
-		freq = (int)cut_off_freqs[FcA];
+		freq = getFcA();
 	else
-		freq = (int)cut_off_freqs[FcB];
+		freq = getFcB();
 
 	writeCommand(CMD_LCD_CLEAR);
 	writeSymbol(first_line, size_of_first_line_string);
